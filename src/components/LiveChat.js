@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ChatMessage from "./ChatMessage";
 import { useDispatch, useSelector } from "react-redux";
 import { addMessage } from "../utils/chatSlice";
-import { generateRandomName } from "../utils/helper";
+import { generateRandomName, messages } from "../utils/helper";
 
 const LiveChat = () => {
   const [LiveMessage, setLiveMessage] = useState("");
@@ -13,7 +13,7 @@ const LiveChat = () => {
       dispatch(
         addMessage({
           name: generateRandomName(),
-          message: "you are an legend",
+          message: messages(Math.floor(Math.random() * 10)),
         })
       );
     }, 1500);
