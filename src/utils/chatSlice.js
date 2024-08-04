@@ -8,9 +8,10 @@ const chatSlice = createSlice({
   },
   reducers: {
     addMessage: (state, action) => {
-      state.message.splice(OFFSET_LIVE_CHAT, 1);
-
       state.message.push(action.payload);
+      if (state.message.length > OFFSET_LIVE_CHAT) {
+        state.message.shift(); // Remove the oldest message
+      }
     },
   },
 });
